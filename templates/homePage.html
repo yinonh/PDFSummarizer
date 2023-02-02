@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script>
+      function toggleInput() {
+        var inputChecked = document.getElementById("inputCheck").checked;
+        document.getElementById("inputBox").disabled = inputChecked;
+        document.getElementById("fileInput").disabled = !inputChecked;
+      }
+    </script>
+    <title>Bootstrap Page</title>
+  </head>
+  <body>
+  <section class="header2 cid-s6S2lFA6sD" id="header02-0">
+
+    <div class="align-center container-fluid" style="background-color: #B2D5E4;">
+        <br>
+        <div class="d-flex align-items-center text-center">
+            <div class="mx-auto" style="width: 50%;">
+                <h2 class="mbr-section-subtitle mbr-fonts-style mb-4 display-4">ARTICLES SUMMARIZER</h2>
+                <p class="mbr-text mbr-fonts-style display-2"><strong>Using OpenAi api</strong>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+
+        <div class="container mt-5">
+          <div class="form-group form-check">
+            <input
+              type="checkbox"
+              name="isLocal"
+              class="form-check-input"
+              id="inputCheck"
+              onchange="toggleInput()"
+            />
+            <label class="form-check-label" for="inputCheck">Enter local pdf file</label>
+          </div>
+
+          <div class="form-group">
+            <label for="inputBox">Pdf file URL</label>
+            <input
+              type="text"
+              name="textInput"
+              class="form-control"
+              id="inputBox"
+              aria-describedby="inputHelp"
+            />
+            <small id="inputHelp" class="form-text text-muted"
+              >Enter some text here</small
+            >
+          </div>
+          <div class="form-group">
+            <label for="fileInput">Choose pdf file</label>
+            <input
+              type="file"
+              name="fileInput"
+              class="form-control-file"
+              id="fileInput"
+              disabled
+            />
+          </div>
+            <div class="d-flex align-items-center text-center">
+        <div class="mx-auto" style="width: 50%;">
+            <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+        </div>
+        </div>
+        </form>
+
+
+      <div class="form-group">
+        <label for="outputBox">Summarize</label>
+        <textarea
+
+          class="form-control"
+          id="outputBox"
+          rows="10"
+          readonly
+        >{{ summarize }}</textarea>
+      </div>
+
+        <br><br><br><br>
+    </div>
+  </body>
+</html>

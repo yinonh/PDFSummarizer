@@ -1,0 +1,17 @@
+# Django specific
+*.log
+local_settings.py
+db.sqlite3
+
+# Python specific
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Environment variables
+.env
+
+# Media files
+files/
